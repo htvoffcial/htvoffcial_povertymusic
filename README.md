@@ -70,4 +70,5 @@ cargo test
 
 ## ライセンス
 
-MIT License — 詳細は `LICENSE` を参照。
+Server Side Public License (SSPL) v1 — 詳細は `LICENSE` を参照。
+このライセンスの下では、本ライブラリ（または改変版）の機能を第三者へサービスとして提供する場合、そのサービス全体のソースコード（Service Source Code）を SSPL の条件で公開する必要があります。
