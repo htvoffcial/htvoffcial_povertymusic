@@ -1,7 +1,9 @@
 # PovertiseStreaming / PVTP
 
 **PovertiseStreaming** は、Opus 6kbps の音声を専用アプリへ届けるための、極限まで軽い音楽ストリーミング企画です。
-そのために設計した独自 UDP 規格が **PVTP**。このリポジトリには、PVTP の仕様書と Rust 製の参照ライブラリを置いています。
+そのために設計した独自 UDP 規格が **PVTP**。このリポジトリには、PVTP の仕様書と Rust 製の参照ライブラリ `pvtp-core` を置いています。
+
+PVTP 専用サーバの実装は [htvoffcial/htvmusic_server](https://github.com/htvoffcial/htvmusic_server) にあります。
 
 HTTP は使いません。音声も、カバー画像（AVIF）も、メタデータも、全部 PVTP の上を流れます。
 
@@ -20,8 +22,9 @@ HTTP は使いません。音声も、カバー画像（AVIF）も、メタデ�
 | パス | 内容 |
 |---|---|
 | `SPEC.md` | PVTP 仕様書（ドラフト v0.4） |
-| `src/` | Rust 参照ライブラリ（クレート名 `povertise-streaming`） |
-| `tests/` | 対向シミュレーションを含む統合テスト |
+| `crates/pvtp-core/` | Rust 参照ライブラリ（クレート名 `pvtp-core`） |
+| `crates/pvtp-core/tests/` | 対向シミュレーションを含む統合テスト |
+| `crates/pvtp-core/examples/` | インターリーブのデモ |
 
 ライブラリが提供するもの：
 
@@ -38,7 +41,7 @@ HTTP は使いません。音声も、カバー画像（AVIF）も、メタデ�
 ## 使い方
 
 ```rust
-use povertise_streaming::interleave::{packetize, Deinterleaver, FrameState};
+use pvtp_core::interleave::{packetize, Deinterleaver, FrameState};
 
 // 30 フレーム（600ms）を 5 パケットに分散する
 let frames: Vec<[u8; 15]> = (0..30).map(|i| [i as u8; 15]).collect();
