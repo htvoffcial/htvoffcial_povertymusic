@@ -1,0 +1,21 @@
+[package]
+name = "povertise-streaming"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+license = "MIT"
+authors = ["PovertiseStreaming Contributors"]
+description = "PVTP: a minimal custom UDP protocol for streaming 6 kbps Opus audio — the PovertiseStreaming reference library"
+repository = "https://github.com/htvoffcial/htvoffcial_povertymusic"
+keywords = ["opus", "streaming", "udp", "audio"]
+categories = ["network-programming", "multimedia"]
+
+[dependencies]
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+ed25519-dalek = { version = "2", features = ["rand_core"] }
+chacha20 = "0.9"
+chacha20poly1305 = "0.10"
+hkdf = "0.12"
+sha2 = "0.10"
+blake3 = "1"
+rand_core = { version = "0.6", features = ["getrandom"] }
